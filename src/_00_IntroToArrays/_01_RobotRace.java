@@ -7,24 +7,40 @@ import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
 public class _01_RobotRace {
-	//1. make a main method
-	
-		//2. create an array of 5 robots.
+	// 1. make a main method
+	public static void main(String[] args) {
 
-		//3. use a for loop to initialize the robots.
+		// 2. create an array of 5 robots.
+		Robot[] robots = new Robot[5];
+		// 3. use a for loop to initialize the robots.
+		for (int i = 0; i < robots.length; i++) {
+			robots[i] = new Robot((i * 150) + 150, 550);
+			robots[i].setSpeed(10);
 
-			//4. make each robot start at the bottom of the screen, side by side, facing up
-	
-		//5. use another for loop to iterate through the array and make each robot move 
-	    //   a random amount less than 50.
-    	
-		//6. use a while loop to repeat step 5 until a robot has reached the top of the screen.
+			// 4. make each robot start at the bottom of the screen, side by side, facing up
 
-		//7. declare that robot the winner and throw it a party!
-    	
-		//8. try different races with different amounts of robots.
-    	
-	    //9. make the robots race around a circular track.
+		}
+		// 5. use another for loop to iterate through the array and make each robot move
+		// a random amount less than 50.
+		while (robots[0].getY() > 150 && robots[1].getY() > 150 && robots[2].getY() > 150 && robots[3].getY() > 150
+				&& robots[4].getY() > 150) {
+			for (Robot r : robots) {
+				Random rand = new Random();
+				r.move(rand.nextInt(50));
+			}
+		}
+		// 6. use a while loop to repeat step 5 until a robot has reached the top of the
+		// screen.
 
-	
+		// 7. declare that robot the winner and throw it a party!
+		for (Robot r : robots) {
+			if (r.getY() <= 150) {
+				r.turn(80000);
+			}
+		}
+		// 8. try different races with different amounts of robots.
+
+		// 9. make the robots race around a circular track.
+
+	}
 }
